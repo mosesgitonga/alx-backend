@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
+"""
+simple pagination
+"""
 import math
 import csv
 from typing import List
+
 
 def index_range(page, page_size, total_items):
     """
