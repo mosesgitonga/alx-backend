@@ -14,6 +14,9 @@ class LRUCache(BaseCaching):
         self.order_of_keys = []
 
     def put(self, key, item):
+        """
+        put item in dict
+        """
         if key is not None and item is not None:
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                 """ Remove the least recently used item (the
@@ -25,6 +28,8 @@ class LRUCache(BaseCaching):
             self.order_of_keys.append(key)
 
     def get(self, key):
+        """gets values from the dict
+        """
         if key is not None:
             if key in self.cache_data:
                 self.order_of_keys.remove(key)
