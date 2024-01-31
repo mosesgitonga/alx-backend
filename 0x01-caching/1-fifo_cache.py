@@ -13,7 +13,7 @@ class FIFOCache(BaseCaching):
             self.cache_data[key] = item
         else:
             return
-        
+
     def get(self, key):
         if key in self.cache_data:
             value = self.cache_data.get(key)
