@@ -5,7 +5,7 @@ simple caching -> first in first out
 from base_caching import BaseCaching
 
 
-class FIFOCache(BaseCaching):
+class BasicCache(BaseCaching):
     """inheriting from BaseCaching
     """
     def put(self, key, item):
