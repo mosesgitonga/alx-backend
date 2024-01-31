@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-simple caching -> first in first out
+simple caching 
 """
 from base_caching import BaseCaching
 
