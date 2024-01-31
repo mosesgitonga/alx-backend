@@ -16,8 +16,8 @@ class LRUCache(BaseCaching):
     def put(self, key, item):
         if key is not None and item is not None:
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-                # Remove the least recently used item (the
-                # first item in the order_of_keys list)
+                """ Remove the least recently used item (the
+                 first item in the order_of_keys list)"""
                 lru_key = self.order_of_keys.pop(0)
                 del self.cache_data[lru_key]
                 print('DISCARD:', lru_key)
