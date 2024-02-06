@@ -6,6 +6,7 @@ from flask import Flask, render_template, request, g
 from flask_babel import Babel
 from typing import Union, Dict
 
+
 class Config():
     """
     configuration for babel
@@ -28,6 +29,7 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+
 @babel.localeselector
 def get_locale() -> str:
     """
@@ -38,6 +40,7 @@ def get_locale() -> str:
         return locale_arg
 
     return request.accept_languages.best_match(app.config['LANGUAGES'])
+
 
 def get_user() -> Union[Dict, None]:
     """Retrieves a user based on a user id.
@@ -54,6 +57,7 @@ def before_request() -> None:
     """
     user = get_user()
     g.user = user
+
 
 @app.route('/')
 def welcome() -> str:
