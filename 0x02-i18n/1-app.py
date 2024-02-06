@@ -7,9 +7,6 @@ from flask_babel import Babel
 from tzlocal import get_localzone
 
 
-app = Flask(__name__)
-
-
 class Config():
     """
     configuration for babel
@@ -18,7 +15,7 @@ class Config():
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
-
+app = Flask(__name__)
 app.config.from_object(Config)
 babel = Babel(app)
 
