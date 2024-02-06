@@ -11,12 +11,6 @@ app = Flask(__name__)
 
 babel = Babel(app)
 
-try:
-    local_tz = get_localzone()
-    default_timezone = local_tz.zone
-except Exception:
-    default_timezone = 'UTC'
-
 
 class Config():
     """
@@ -24,7 +18,7 @@ class Config():
     """
     LANGUAGES = ['en', 'fr']
     BABEL_DEFAULT_LOCALE = 'en'
-    DEFAULT_TIMEZONE = default_timezone
+    DEFAULT_TIMEZONE = 'UTC'
 
 
 app.config.from_object(Config)
