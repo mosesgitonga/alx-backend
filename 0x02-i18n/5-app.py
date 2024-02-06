@@ -2,10 +2,9 @@
 """
 Basic babel setup
 """
-from flask import Flask, render_template, request
-from flask-login import login_as
+from flask import Flask, render_template, request, g
 from flask_babel import Babel
-
+from typing import Union, Dict
 
 class Config():
     """
@@ -62,7 +61,7 @@ def welcome() -> str:
     """
     welcome page route
     """
-    return render_template('4-index.html')
+    return render_template('5-index.html')
 
 
 if __name__ == "__main__":
