@@ -40,18 +40,17 @@ def get_locale() -> str:
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 def get_user() -> Union[Dict, None]:
-    """get user from users
+    """Retrieves a user based on a user id.
     """
     login_id = request.args.get('login_as')
     if login_id:
         return users.get(int(login_id))
-    else:
-        return None
+    return None
+
 
 @app.before_request
 def before_request() -> None:
-    """
-    run this operation before each request
+    """Performs some routines before each request's resolution.
     """
     user = get_user()
     g.user = user
