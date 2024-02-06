@@ -5,6 +5,8 @@ Basic babel setup
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
 from typing import Union, Dict
+from pytz import timezone
+import pytz.exceptions
 
 
 class Config():
@@ -52,8 +54,31 @@ def get_locale() -> str:
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-
-
+@babel.timezoneselector
+def get_timezone():
+    """
+    Select and return appropriate timezone
+    """
+    # Find timezone parameter in URL parameters
+    tzone = request.args.get('timezone', None)
+    if tzone:
+        try:
+            return timezone(tzone).zone
+        except pytz.exceptions.UnknownTimeZoneError:
+            pass
+    
+    # Find time zone from user settings
+    if g.user:
+        try:
+            tzone = g.user.get('timezone')
+            return timezone(tzone).zone
+        except pytz.exceptions.UnknownTimeZoneError:
+            pass
+    
+    # Default to UTC
+    default_tz = app.config['BABEL_DEFAULT_TIMEZONE']
+    return default_tz
+     
 def get_user() -> Union[Dict, None]:
     """Retrieves a user based on a user id.
     """
