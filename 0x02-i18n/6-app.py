@@ -35,7 +35,6 @@ def get_locale() -> str:
     """
     set best language
     """
-        # Locale from URL parameters
     locale = request.args.get('locale')
     if locale in app.config['LANGUAGES']:
         return locale
