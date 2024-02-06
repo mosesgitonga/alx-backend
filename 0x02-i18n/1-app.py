@@ -9,8 +9,6 @@ from tzlocal import get_localzone
 
 app = Flask(__name__)
 
-babel = Babel(app)
-
 
 class Config():
     """
@@ -22,6 +20,7 @@ class Config():
 
 
 app.config.from_object(Config)
+babel = Babel(app)
 
 
 @app.route('/')
